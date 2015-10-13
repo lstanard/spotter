@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  workout_id: 
+  exercise_id: 
+  sets: 1
+  target_reps: 1
+  rest: 1
+  tempo: 1
+  notes: MyString
+
+two:
+  workout_id: 
+  exercise_id: 
+  sets: 1
+  target_reps: 1
+  rest: 1
+  tempo: 1
+  notes: MyString

@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'turbolinks'
 gem 'sass-rails', '~> 5.0.0.beta1'
 gem 'bootstrap-sass', '3.2.0.0'
+gem 'arel', '6.0.0.beta2'
 
 group :development, :test do
   gem 'mysql2', '~> 0.3.18'
