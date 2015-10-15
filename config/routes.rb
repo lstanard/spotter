@@ -1,16 +1,38 @@
 Rails.application.routes.draw do
-  get 'users/new'
+
+  # get "logout" => "sessions#destroy", :as => "logout"
+  # get "login" => "sessions#new", :as => "login"
+  # get "signup" => "users#new", :as => "signup"
+
+  root :to => "users#new"
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
+
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
+  resources :users
+  resources :sessions
+
+  get 'workouts/new'
+  get 'workouts/create'
+  get 'workouts/update'
+  get 'workouts/edit'
+  get 'workouts/destroy'
+  get 'workouts/index'
+  get 'workouts/show'
+
+  get 'sessions/new'
+  get 'sessions/create'
+  get 'sessions/destroy'
 
   get 'users/create'
-
   get 'users/update'
-
   get 'users/edit'
-
   get 'users/destroy'
-
   get 'users/index'
-
   get 'users/show'
 
   # The priority is based upon order of creation: first created -> highest priority.
