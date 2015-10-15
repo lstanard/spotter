@@ -1,2 +1,16 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1><%= @user.get_fullname %></h1>
+
+<% if @user.workouts %>
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+		<td><strong>Date</strong></td>
+	</tr>
+	<% @user.workouts.each do |workout| %>
+	<tr>
+		<td><%= link_to workout.name, workout_path(workout) %></td>
+		<td><%= workout.date.to_date %></td>
+	</tr>
+	<% end %>
+</table>
+<% end %>

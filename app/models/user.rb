@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
+  def get_fullname
+    self.first_name + ' ' + self.last_name
+  end
+
 end

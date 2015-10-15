@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_filter :authorize, :except => [:new, :create]
+
   def new
     @user = User.new
   end
@@ -9,7 +12,7 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       redirect_to root_url, :notice => "Sign up successful."
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -26,6 +29,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(current_user)
   end
 
   private

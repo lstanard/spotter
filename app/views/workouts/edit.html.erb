@@ -1,2 +1,22 @@
-<h1>Workouts#edit</h1>
-<p>Find me in app/views/workouts/edit.html.erb</p>
+<h1>Edit Workout</h1>
+
+  <%= form_for @workout do |f| %>
+
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+
+  <p>
+    <%= f.label :date %><br />
+    <%= f.date_field :date %>
+  </p>
+
+  <p>
+    <%= f.label :notes %><br />
+    <%= f.text_area :notes %>
+  </p>
+
+  <p class="button"><%= f.submit "Save" %></p>
+
+<% end %>
