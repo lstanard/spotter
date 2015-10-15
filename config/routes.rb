@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   get '/signup' => 'users#new'
   post '/users' => 'users#create'
 
+  # TODO: Review and revise these resources, include as-needed
   resources :users
   resources :sessions
   resources :workouts
+  resources :exercises
 
   get 'sessions/new'
   get 'sessions/create'

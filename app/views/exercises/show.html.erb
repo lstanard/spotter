@@ -1,0 +1,4 @@
+<h1><%= @exercise.name %></h1>
+<p><%= @exercise.description %></p>
+<%= link_to 'Edit', edit_exercise_path(@exercise) %> | <%= render_delete_exercise_path(@exercise) %>
+<hr>

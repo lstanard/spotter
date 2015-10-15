@@ -13,8 +13,8 @@
 <% else %>
   <%= link_to 'Login', '/login' %> | <%= link_to 'Signup', '/signup' %>
 <% end %>
-
-<%= link_to 'New Workout', new_workout_path %>
+<br>
+<%= link_to 'New Workout', new_workout_path %> | <%= link_to 'All Exercises', exercises_path %>
 
 <%= yield %>
 

@@ -1,0 +1,16 @@
+<h1>All Exercises</h1>
+
+<%= link_to 'New Exercise', new_exercise_path %>
+
+<% if @exercises %>
+<table>
+	<tr>
+		<td><strong>Name</strong></td>
+	</tr>
+	<% @exercises.each do |exercise| %>
+	<tr>
+		<td><%= link_to exercise.name, exercise_path(exercise) %></td>
+	</tr>
+	<% end %>
+</table>
+<% end %>
