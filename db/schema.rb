@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151013042454) do
+ActiveRecord::Schema.define(version: 20151015015801) do
 
   create_table "exercises", force: true do |t|
     t.string   "name",        limit: 255
@@ -43,11 +43,13 @@ ActiveRecord::Schema.define(version: 20151013042454) do
   add_index "user_records", ["users_id"], name: "index_user_records_on_users_id", using: :btree
 
   create_table "users", force: true do |t|
-    t.string   "first_name", limit: 255
-    t.string   "last_name",  limit: 255
-    t.string   "email",      limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.string   "first_name",    limit: 255
+    t.string   "last_name",     limit: 255
+    t.string   "email",         limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "password_hash", limit: 255
+    t.string   "password_salt", limit: 255
   end
 
   create_table "workout_exercises", force: true do |t|
