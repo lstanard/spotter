@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :sessions
   resources :workouts
   resources :exercises
+  resources :workout_exercises
 
   get 'sessions/new'
   get 'sessions/create'
