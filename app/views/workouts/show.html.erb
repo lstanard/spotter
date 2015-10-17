@@ -30,9 +30,11 @@
 				<%= render partial: "sets", locals: {f: f, workout_exercise: workout_exercise} %>
 			</td>
 		</tr>
+		<% if !workout_exercise.notes.nil? && workout_exercise.notes != '' %>
 		<tr>
 			<td colspan="6"><strong>Notes: </strong><%= workout_exercise.notes %></td>
 		</tr>
+		<% end %>
 	</table>
 	<% end %>
 <br /><br />

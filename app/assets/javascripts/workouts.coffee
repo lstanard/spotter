@@ -4,6 +4,7 @@
 
 $(document).ready ->
   $('form.edit_workout_exercise input').on 'change', ->
-    $(this).parents('form').submit()
+    console.log('updated')
+    $(this).parents('form.edit_workout_exercise').submit()
     return
   return
