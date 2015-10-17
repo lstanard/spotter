@@ -1,1 +1,38 @@
 <h1>Edit Set</h1>
+
+<%= form_for @workout_exercise do |f| %>
+
+<p>
+	<%= f.label :exercises_id, 'Exercise' %>
+	<%= f.select(:exercises_id, @exercises.collect {|a| [a.name, a.id]}) -%>
+</p>
+
+<p>
+	<%= f.label :sets %><br />
+	<%= f.text_field :sets %>
+</p>
+
+<p>
+	<%= f.label :target_reps, 'Reps' %><br />
+	<%= f.text_field :target_reps %>
+</p>
+
+<p>
+	<%= f.label :rest %><br />
+	<%= f.text_field :rest %>
+</p>
+
+<p>
+	<%= f.label :tempo %><br />
+	<%= f.text_field :tempo %>
+</p>
+
+<p>
+	<%= f.label :notes %><br />
+	<%= f.text_area :notes %>
+</p>
+
+<p class="button"><%= f.submit "Add" %></p>
+
+<% end %>
+

@@ -1,0 +1,11 @@
+<% if workout_exercise.single_sets %>
+	<% workout_exercise.single_sets.each do |single_set| %>
+		<% reps = single_set[1]['reps'] %>
+		<% weight = single_set[1]['weight'] %>
+		<p><strong>Set <%= "#{single_set[0]}: " %></strong> Reps <%= f.text_field :single_sets, id: "workout_exercise_single_sets_#{single_set[0]}_reps", name: "workout_exercise[single_sets][#{single_set[0]}][reps]", value: reps %> Weight<%= f.text_field :single_sets, id: "workout_exercise_single_sets_#{single_set[0]}_weight", name: "workout_exercise[single_sets][#{single_set[0]}][weight]", value: weight %></p>
+	<% end %>
+<% else %>
+	<% 1.upto(get_rep_count(workout_exercise)) do |i| %>
+		<p><strong>Set <%= "#{i}: " %></strong> Reps <%= f.text_field :single_sets, id: "workout_exercise_single_sets_#{i}_reps", name: "workout_exercise[single_sets][#{i}][reps]" %> Weight<%= f.text_field :single_sets, id: "workout_exercise_single_sets_#{i}_weight", name: "workout_exercise[single_sets][#{i}][weight]" %></p>
+	<% end %>
+<% end %>

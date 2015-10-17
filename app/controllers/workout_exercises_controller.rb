@@ -20,9 +20,20 @@ class WorkoutExercisesController < ApplicationController
   end
 
   def update
+    @workout_exercise = WorkoutExercise.find(params[:id])
+    @single_sets = params[:workout_exercise][:single_sets]
+    puts @single_sets
+    if @workout_exercise.update_attributes(workout_exercise_params)
+      @workout = Workout.find(@workout_exercise.workouts_id)
+      redirect_to @workout
+    else
+      render 'edit'
+    end
   end
 
   def edit
+    @workout_exercise = WorkoutExercise.find(params[:id])
+    @exercises = Exercise.all
   end
 
   def destroy
@@ -38,6 +49,6 @@ class WorkoutExercisesController < ApplicationController
   private
 
     def workout_exercise_params
-      params.require(:workout_exercise).permit(:workouts_id, :exercises_id, :sets, :target_reps, :rest, :tempo, :notes)
+      params.require(:workout_exercise).permit(:workouts_id, :exercises_id, :sets, :target_reps, :rest, :tempo, :notes, {:single_sets => [:reps, :weight]})
     end
 end

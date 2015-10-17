@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151015030321) do
+ActiveRecord::Schema.define(version: 20151017055600) do
 
   create_table "exercises", force: true do |t|
     t.string   "name",        limit: 255
@@ -19,16 +19,6 @@ ActiveRecord::Schema.define(version: 20151015030321) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
-
-  create_table "single_sets", force: true do |t|
-    t.integer  "workout_exercises_id", limit: 4
-    t.integer  "reps",                 limit: 4
-    t.integer  "weight",               limit: 4
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-  end
-
-  add_index "single_sets", ["workout_exercises_id"], name: "index_single_sets_on_workout_exercises_id", using: :btree
 
   create_table "user_records", force: true do |t|
     t.integer  "users_id",       limit: 4
@@ -59,8 +49,9 @@ ActiveRecord::Schema.define(version: 20151015030321) do
     t.integer  "rest",         limit: 4
     t.integer  "tempo",        limit: 4
     t.string   "notes",        limit: 255
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                      null: false
+    t.datetime "updated_at",                      null: false
+    t.text     "single_sets",  limit: 4294967295
   end
 
   add_index "workout_exercises", ["exercises_id"], name: "index_workout_exercises_on_exercises_id", using: :btree

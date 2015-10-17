@@ -1,33 +1,41 @@
 <h1><%= @workout.name %></h1>
 <p><strong>Date:</strong> <%= @workout.date.to_date %></p>
-<%= link_to 'Edit', edit_workout_path(@workout) %> | <%= render_delete_workout_path(@workout) %>
+<%= link_to 'Edit', edit_workout_path(@workout) %> | <%= render_delete_workout_path(@workout) %> | <a href="#">Save routine</a>
 <hr>
 <h4>Notes</h4>
 <p><%= @workout.notes %></p>
 <hr>
-<%= link_to 'Add Exercise', new_workout_exercise_path(:workout_id => @workout.id) %>
 
-<% if @workout.workout_exercises %>
-<table>
-	<tr>
-		<td><strong>Exercise</strong></td>
-		<td><strong>Sets</strong></td>
-		<td><strong>Reps</strong></td>
-		<td><strong>Rest</strong></td>
-		<td><strong>Tempo</strong></td>
-		<td><strong>Notes</strong></td>
-		<td></td>
-	</tr>
-	<% @workout.get_workout_exercises.each do |workout_exercise| %>
-	<tr>
-		<td><%= workout_exercise.exercise.name %></td>
-		<td><%= workout_exercise.sets %></td>
-		<td><%= workout_exercise.target_reps %></td>
-		<td><%= workout_exercise.rest %></td>
-		<td><%= workout_exercise.tempo %></td>
-		<td><%= workout_exercise.notes %></td>
-		<td><%= render_delete_workout_exercise_path(workout_exercise.id, @workout) %></td>
-	</tr>
+<% @workout.get_workout_exercises.each do |workout_exercise| %>
+	<%= form_for(workout_exercise, remote: true) do |f| %>
+	<table>
+		<tr>
+			<td></td>
+			<td><strong>Sets</strong></td>
+			<td><strong>Reps</strong></td>
+			<td><strong>Rest</strong></td>
+			<td><strong>Tempo</strong></td>
+			<td></td>
+		</tr>
+		<tr>
+			<td><strong><%= link_to workout_exercise.exercise.name, edit_workout_exercise_path(workout_exercise) %></strong></td>
+			<td><%= workout_exercise.sets %></td>
+			<td><%= workout_exercise.target_reps %></td>
+			<td><%= workout_exercise.rest %></td>
+			<td><%= workout_exercise.tempo %></td>
+			<td><%= render_delete_workout_exercise_path(workout_exercise.id, @workout) %></td>
+		</tr>
+		<tr>
+			<td colspan="6">
+				<%= render partial: "sets", locals: {f: f, workout_exercise: workout_exercise} %>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="6"><strong>Notes: </strong><%= workout_exercise.notes %></td>
+		</tr>
+	</table>
 	<% end %>
-</table>
+<br /><br />
 <% end %>
+
+<%= link_to 'Add Exercise', new_workout_exercise_path(:workout_id => @workout.id) %>
